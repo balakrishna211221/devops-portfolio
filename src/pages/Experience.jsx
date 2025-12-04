@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, ChevronUp, Briefcase } from 'lucide-react';
 import { cn } from '../lib/utils';
+import { portfolioData } from '../data/portfolioData';
 
 const ProjectCard = ({ project, isOpen, onToggle }) => {
     return (
@@ -76,78 +77,8 @@ const ProjectCard = ({ project, isOpen, onToggle }) => {
 const Experience = () => {
     const [openIndex, setOpenIndex] = useState(0);
 
-    const projects = [
-        {
-            title: "Courseware",
-            role: "DevOps Engineer",
-            responsibilities: [
-                "Designed and implemented CI/CD pipelines using Jenkins and GitHub Actions.",
-                "Managed AWS infrastructure using Terraform for scalable deployments.",
-                "Orchestrated containerized applications using Kubernetes (EKS)."
-            ],
-            achievements: [
-                "Reduced deployment time by 40% through automated pipelines.",
-                "Improved system reliability with proactive monitoring using Prometheus and Grafana."
-            ],
-            tools: ["AWS", "Jenkins", "Terraform", "Kubernetes", "Docker"]
-        },
-        {
-            title: "DDP (Digital Delivery Platform)",
-            role: "DevOps Engineer",
-            responsibilities: [
-                "Automated cloud infrastructure provisioning with CloudFormation.",
-                "Implemented security best practices for IAM and network configurations.",
-                "Managed microservices deployment on ECS."
-            ],
-            achievements: [
-                "Achieved 99.9% uptime for critical delivery services.",
-                "Optimized cloud costs by 20% through resource rightsizing."
-            ],
-            tools: ["AWS ECS", "CloudFormation", "Python", "CloudWatch"]
-        },
-        {
-            title: "FDC (Fulfillment Distribution Center)",
-            role: "DevOps Engineer",
-            responsibilities: [
-                "Developed Ansible playbooks for configuration management.",
-                "Set up centralized logging using ELK stack.",
-                "Collaborated with development teams to streamline release processes."
-            ],
-            achievements: [
-                "Standardized server configurations across multiple environments.",
-                "Enhanced troubleshooting capabilities with centralized logs."
-            ],
-            tools: ["Ansible", "ELK Stack", "Linux", "Bash"]
-        },
-        {
-            title: "AIP (Analytics Insight Platform)",
-            role: "DevOps Engineer",
-            responsibilities: [
-                "Managed big data infrastructure on AWS EMR and Glue.",
-                "Implemented data pipeline automation using Airflow.",
-                "Ensured data security and compliance with encryption standards."
-            ],
-            achievements: [
-                "Scaled data processing capabilities to handle terabytes of daily data.",
-                "Automated data quality checks in the pipeline."
-            ],
-            tools: ["AWS EMR", "Glue", "Airflow", "S3"]
-        },
-        {
-            title: "OMS (Order Management System)",
-            role: "DevOps Engineer",
-            responsibilities: [
-                "Maintained IBM Sterling OMS infrastructure.",
-                "Automated database migrations and backups.",
-                "Supported high-volume transaction processing during peak seasons."
-            ],
-            achievements: [
-                "Zero downtime during major version upgrades.",
-                "Improved database performance through query optimization."
-            ],
-            tools: ["IBM Sterling OMS", "Oracle DB", "Jenkins", "Shell Scripting"]
-        }
-    ];
+    const { experience } = portfolioData;
+    const projects = experience;
 
     return (
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

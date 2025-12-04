@@ -4,26 +4,34 @@ import { Save, Copy, Check } from 'lucide-react';
 
 const Admin = () => {
     const [version, setVersion] = useState('');
-    const [fileName, setFileName] = useState('');
-    const [generatedJson, setGeneratedJson] = useState('');
+    const [pdfName, setPdfName] = useState('');
+    const [docxName, setDocxName] = useState('');
+    const [generatedCode, setGeneratedCode] = useState('');
     const [copied, setCopied] = useState(false);
 
     const handleGenerate = (e) => {
         e.preventDefault();
-        if (!version || !fileName) return;
+        if (!version || !pdfName) return;
 
-        const json = {
+        const config = {
             currentVersion: version,
             versions: {
-                [version]: `/resumes/${fileName}`
+                [version]: {
+                    pdf: `/resumes/${pdfName}`,
+                    docx: docxName ? `/resumes/${docxName}` : null
+                }
             }
         };
 
-        setGeneratedJson(JSON.stringify(json, null, 2));
+        const codeSnippet = `// Update the resume section in src/data/portfolioData.js
+resume: ${JSON.stringify(config, null, 4)}
+`;
+
+        setGeneratedCode(codeSnippet);
     };
 
     const handleCopy = () => {
-        navigator.clipboard.writeText(generatedJson);
+        navigator.clipboard.writeText(generatedCode);
         setCopied(true);
         setTimeout(() => setCopied(false), 2000);
     };
@@ -54,18 +62,31 @@ const Admin = () => {
 
                     <div>
                         <label className="block text-sm font-medium text-slate-300 mb-2">
-                            Resume File Name
+                            PDF Filename
                         </label>
                         <input
                             type="text"
-                            value={fileName}
-                            onChange={(e) => setFileName(e.target.value)}
+                            value={pdfName}
+                            onChange={(e) => setPdfName(e.target.value)}
                             className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             placeholder="resume-v2.pdf"
                             required
                         />
+                    </div>
+
+                    <div>
+                        <label className="block text-sm font-medium text-slate-300 mb-2">
+                            DOCX Filename (Optional)
+                        </label>
+                        <input
+                            type="text"
+                            value={docxName}
+                            onChange={(e) => setDocxName(e.target.value)}
+                            className="w-full px-4 py-2 bg-slate-900 border border-slate-700 rounded-lg text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            placeholder="resume-v2.docx"
+                        />
                         <p className="mt-1 text-xs text-slate-500">
-                            Make sure to upload this file to public/resumes/ folder manually.
+                            Make sure to upload these files to public/resumes/ folder manually.
                         </p>
                     </div>
 
@@ -73,14 +94,14 @@ const Admin = () => {
                         type="submit"
                         className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors"
                     >
-                        <Save size={20} /> Generate JSON Config
+                        <Save size={20} /> Generate Config Snippet
                     </button>
                 </form>
 
-                {generatedJson && (
+                {generatedCode && (
                     <div className="mt-8">
                         <div className="flex items-center justify-between mb-2">
-                            <h3 className="text-sm font-medium text-slate-300">Generated JSON (Copy & Paste to public/resume.json)</h3>
+                            <h3 className="text-sm font-medium text-slate-300">Generated Config (Paste into portfolioData.js)</h3>
                             <button
                                 onClick={handleCopy}
                                 className="flex items-center gap-1 text-xs text-blue-400 hover:text-blue-300"
@@ -90,7 +111,7 @@ const Admin = () => {
                             </button>
                         </div>
                         <pre className="bg-slate-950 p-4 rounded-lg overflow-x-auto text-sm text-green-400 font-mono border border-slate-800">
-                            {generatedJson}
+                            {generatedCode}
                         </pre>
                     </div>
                 )}

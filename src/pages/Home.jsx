@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Cloud, Server, Container, Code, Database, Shield } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { portfolioData } from '../data/portfolioData';
 
 const Home = () => {
+    const { hero } = portfolioData;
+
     return (
         <div className="relative overflow-hidden">
             {/* Background Elements */}
@@ -20,10 +23,10 @@ const Home = () => {
                         className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6"
                     >
                         <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                            DevOps Engineer
+                            {hero.title}
                         </span>
                         <br />
-                        <span className="text-slate-100">Automating the Future</span>
+                        <span className="text-slate-100">{hero.subtitle}</span>
                     </motion.h1>
 
                     <motion.p
@@ -32,8 +35,7 @@ const Home = () => {
                         transition={{ duration: 0.5, delay: 0.2 }}
                         className="mt-4 text-xl text-slate-400 max-w-3xl mx-auto mb-10"
                     >
-                        Specializing in CI/CD, Kubernetes, Cloud Infrastructure, and Infrastructure as Code.
-                        Building scalable, secure, and efficient systems.
+                        {hero.description}
                     </motion.p>
 
                     <motion.div
@@ -64,14 +66,7 @@ const Home = () => {
                     transition={{ duration: 1, delay: 0.6 }}
                     className="mt-20 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 text-center opacity-70"
                 >
-                    {[
-                        { icon: Cloud, label: 'AWS' },
-                        { icon: Container, label: 'Kubernetes' },
-                        { icon: Server, label: 'Terraform' },
-                        { icon: Code, label: 'CI/CD' },
-                        { icon: Database, label: 'Databases' },
-                        { icon: Shield, label: 'Security' },
-                    ].map((item, index) => (
+                    {hero.floatingIcons.map((item, index) => (
                         <motion.div
                             key={index}
                             whileHover={{ scale: 1.1, color: '#60a5fa' }}

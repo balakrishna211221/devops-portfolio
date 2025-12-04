@@ -1,36 +1,9 @@
 import { motion } from 'framer-motion';
+import { portfolioData } from '../data/portfolioData';
 
 const Skills = () => {
-    const skillCategories = [
-        {
-            title: "DevOps & CI/CD",
-            skills: ["Jenkins", "GitHub Actions", "Azure DevOps", "ArgoCD", "Maven", "Ant"]
-        },
-        {
-            title: "Cloud Platforms",
-            skills: ["AWS (EC2, S3, EKS, ECS, VPC, IAM, Lambda)", "Azure (AKS, App Service)", "IBM Sterling OMS"]
-        },
-        {
-            title: "IaC",
-            skills: ["Terraform", "CloudFormation"]
-        },
-        {
-            title: "Containers & Orchestration",
-            skills: ["Docker", "Kubernetes (EKS/AKS/ECS)", "Helm"]
-        },
-        {
-            title: "Monitoring & Logging",
-            skills: ["Grafana", "Prometheus", "Nagios", "ELK Stack"]
-        },
-        {
-            title: "Security",
-            skills: ["IAM", "SSL/TLS", "Secrets Manager", "Key Vault"]
-        },
-        {
-            title: "Scripting",
-            skills: ["Shell/Bash", "Python", "YAML", "JSON"]
-        }
-    ];
+    const { skills } = portfolioData;
+    const skillCategories = skills;
 
     const container = {
         hidden: { opacity: 0 },
