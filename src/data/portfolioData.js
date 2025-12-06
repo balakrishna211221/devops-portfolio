@@ -8,8 +8,8 @@ export const portfolioData = {
         phone: "+91-6304082149",
         location: "India",
         socialLinks: {
-            linkedin: "https://linkedin.com/in/your-profile",
-            github: "https://github.com/your-username",
+            linkedin: "https://www.linkedin.com/in/bala-krishna-addagatla-66620a16a/",
+            github: "https://github.com/balakrishna211221/",
             gmail: "mailto:abk971995@gmail.com"
         }
     },
@@ -28,14 +28,16 @@ export const portfolioData = {
     },
     about: {
         bio: [
-            "DevOps Engineer with 4+ years of strong experience in CI/CD automation, AWS/Azure cloud infrastructure, container orchestration, Infrastructure as Code (Terraform), and cloud-native deployments. Skilled at optimizing delivery pipelines, automating infrastructure, improving release velocity, and ensuring high availability and scalability.",
+            "DevOps Engineer with 4 years of strong experience in CI/CD automation, AWS/Azure cloud infrastructure, container orchestration, Infrastructure as Code (Terraform), and cloud-native deployments. Skilled at optimizing delivery pipelines, automating infrastructure, improving release velocity, and ensuring high availability and scalability.",
             "Strong hands-on expertise with Jenkins, GitHub Actions, Argo CD, Docker, Kubernetes (EKS/AKS), Ansible, Terraform, CloudWatch, and microservices architectures. Proven achievements in cost optimization, disaster recovery automation, observability, and DevSecOps practices."
         ],
         focusAreas: [
             "Cloud Automation",
             "Infrastructure as Code",
             "Container Orchestration",
-            "DevSecOps"
+            "DevSecOps",
+            "CI/CD"
+
         ]
     },
     experience: [
